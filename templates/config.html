@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SuppShare - Share Your Supplement Knowledge</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/landing-page.min.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">SuppShare</a>
+        </div>
+    </nav>
+
+
+
+    <!-- Icons Grid -->
+    <section class="features-icons bg-light text-center">
+        <div class="container">
+            <div class="row">
+              <form id="searchProductByKeywordForm">
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Search a product</label>
+                      <input id="keyword-input" type="text" class="form-control" placeholder="Enter a keyword">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <div class="row">
+              <p id="content-results"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="background-color: #efefef!important">
+        <div class="footer_copywrite_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Footer Copwrite Area -->
+                        <div class="footer_bottom text-center">
+                            <p>Built with <i class="fa fa-heart"></i> by <a href="https://virtuetheory.com">Virtue Theory</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // this is the id of the form
+        $("#searchProductByKeywordForm").submit(function(e) {
+          e.preventDefault();
+          var keyword = $('#keyword-input').val();
+            $.ajax({
+                type: "GET",
+                url: '/api/items/search/'+keyword,
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
