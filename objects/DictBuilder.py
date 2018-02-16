@@ -1,18 +1,16 @@
 import xmltodict, json
 from flask import Flask, Blueprint, render_template, request, jsonify, redirect, make_response, session, url_for
 from objects.Items import Amazon
+from objects.Utilities import Utilities
 
-
-accesskey = 'AKIAJFIUWEJICEK25LMQ'
-secretkey = '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'
-associatetag = 'suppshare-20'
+util = Utilities()
 
 class DictBuilder:
     def __init__(self):
         pass
 
     def buildItemResult(self, keyword):
-        amazon = Amazon(accesskey, secretkey, associatetag)
+        amazon = Amazon(util.amazonKeys()['accesskey'], util.amazonKeys()['secretkey'], util.amazonKeys()['associatetag'])
         xml = amazon.ItemSearch(Keywords=keyword, SearchIndex="All")
         parsedResult = xmltodict.parse(xml)
 
@@ -20,6 +18,7 @@ class DictBuilder:
 
         iteratedItems = items.iteritems()
 
+        #need to fix this ugh
         next(iteratedItems)
         next(iteratedItems)
         next(iteratedItems)
