@@ -145,6 +145,7 @@ class AmazonCall(object):
         """The URL for making the given query against the API."""
         query = {
             'Operation': self.Operation,
+            'ResponseGroup': 'Images',
             'Service': "AWSECommerceService",
             'Timestamp': time.strftime(
                 "%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

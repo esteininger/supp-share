@@ -358,7 +358,11 @@
 
         var renderSupps = function(data) {
             $(data).each(function() {
-              console.log(this)
+              var item;
+              for (var i = 0; i < data.length; i++) {
+                item = this[i]
+              console.log(item)
+
                 var html =
                     `
                   <div class="col-md-3 col-sm-4 col-xs-12">
@@ -369,13 +373,13 @@
                                     <tr>
                                         <td>
                                             <div class="supp-image">
-                                                <img src="" class="img-responsive" />
+                                                <img src="`+item['MediumImage']['URL']+`" class="img-responsive" />
                                             </div>
                                         </td>
                                         <td style="vertical-align: top;">
                                             <div class="supp-text">
-                                                <span class="supp-name">`+this+`</span><br />
-                                                <span class="supp-artist"></span>
+                                                <span class="supp-name">`+item+`</span><br />
+                                                <span class="supp-artist">`+item+`</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -386,6 +390,7 @@
                 </div>
                 `
                 $('#supp-placeholder').append(html);
+              }
 
             });
         }
