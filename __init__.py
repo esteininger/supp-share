@@ -85,7 +85,8 @@ def profile(username):
 @app.route('/config')
 @login_required
 def configPage():
-    return render_template('config.html')
+    user = userSessionToUsername()
+    return render_template('config.html', user=user)
 
 @app.route("/logout")
 def logout():

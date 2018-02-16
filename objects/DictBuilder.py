@@ -18,8 +18,16 @@ class DictBuilder:
 
         items = parsedResult['ItemSearchResponse']['Items']
 
+        iteratedItems = items.iteritems()
+
+        next(iteratedItems)
+        next(iteratedItems)
+        next(iteratedItems)
+        next(iteratedItems)
+
+
         itemsDict = []
-        for key, value in items.iteritems():
+        for key, value in iteratedItems:
             v = value
             itemsDict.append(v)
 
