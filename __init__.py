@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.register_blueprint(app_api)
 
 
-app.secret_key = '123'
+app.secret_key = util.secretkey()
 
 def userSessionToUsername():
     try:
